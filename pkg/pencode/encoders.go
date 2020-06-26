@@ -6,13 +6,15 @@ import (
 )
 
 var availableEncoders = map[string]Encoder{
-	"b64encode":    Base64Encoder{},
-	"b64decode":    Base64Decoder{},
-	"hexencode":    HexEncoder{},
-	"hexdecode":    HexDecoder{},
-	"urlencode":    URLEncoder{},
-	"urldecode":    URLDecoder{},
-	"urlencodeall": URLEncoderAll{},
+	"b64encode":        Base64Encoder{},
+	"b64decode":        Base64Decoder{},
+	"hexencode":        HexEncoder{},
+	"hexdecode":        HexDecoder{},
+	"unicodedecode":    UnicodeDecode{},
+	"unicodeencodeall": UnicodeEncodeAll{},
+	"urlencode":        URLEncoder{},
+	"urldecode":        URLDecoder{},
+	"urlencodeall":     URLEncoderAll{},
 }
 
 type Chain struct {
