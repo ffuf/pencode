@@ -2,11 +2,15 @@ package pencode
 
 import (
 	"fmt"
+	"sort"
 )
 
 var availableEncoders = map[string]Encoder{
-	"b64encode": Base64Encoder{},
-	"b64decode": Base64Decoder{},
+	"b64encode":    Base64Encoder{},
+	"b64decode":    Base64Decoder{},
+	"urlencode":    URLEncoder{},
+	"urldecode":    URLDecoder{},
+	"urlencodeall": URLEncoderAll{},
 }
 
 type Chain struct {
@@ -69,7 +73,15 @@ func (c *Chain) Usage() {
 	}
 	format := fmt.Sprintf("  %%-%ds- %%s\n", max_length+2)
 
-	for k, v := range availableEncoders {
-		fmt.Printf(format, k, v.HelpText())
+	// Sort the encoders alphabetically
+	names := make([]string, 0, len(availableEncoders))
+	for k := range availableEncoders {
+		names = append(names, k)
+	}
+	sort.Strings(names)
+
+	for _, n := range names {
+		v := availableEncoders[n]
+		fmt.Printf(format, n, v.HelpText())
 	}
 }
