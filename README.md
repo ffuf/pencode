@@ -31,7 +31,7 @@ Available encoders:
   urlencode         - URL encode reserved characters
   urlencodeall      - URL encode all characters
   utf16             - UTF-16 encoder (Little Endian)
-  utf16be           - UTF-16 encoder (Little Endian)
+  utf16be           - UTF-16 encoder (Big Endian)
 ```
 
 To urlencode, base64encode and hex encode a string:
