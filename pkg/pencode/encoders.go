@@ -15,6 +15,8 @@ var availableEncoders = map[string]Encoder{
 	"urlencode":        URLEncoder{},
 	"urldecode":        URLDecoder{},
 	"urlencodeall":     URLEncoderAll{},
+	"utf16":            UTF16LEEncode{},
+	"utf16be":          UTF16BEEncode{},
 }
 
 type Chain struct {
