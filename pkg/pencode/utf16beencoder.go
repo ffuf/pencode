@@ -21,5 +21,5 @@ func (u UTF16BEEncode) Encode(input []byte) ([]byte, error) {
 }
 
 func (u UTF16BEEncode) HelpText() string {
-	return "UTF-16 encoder (Little Endian)"
+	return "UTF-16 encoder (Big Endian)"
 }
