@@ -73,6 +73,7 @@ func (c *Chain) GetEncoders() []string {
 	for e := range availableEncoders {
 		names = append(names, e)
 	}
+	sort.Strings(names)
 	return names
 }
 
@@ -89,7 +90,6 @@ func (c *Chain) Usage() {
 
 	// Sort the encoders alphabetically
 	names := c.GetEncoders()
-	sort.Strings(names)
 
 	for _, n := range names {
 		v := availableEncoders[n]
