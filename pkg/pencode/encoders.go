@@ -69,6 +69,7 @@ func (c *Chain) HasEncoder(name string) bool {
 }
 
 func (c *Chain) GetEncoders() []string {
+	// Sort the encoders alphabetically
 	names := make([]string, 0, len(availableEncoders))
 	for e := range availableEncoders {
 		names = append(names, e)
@@ -87,8 +88,6 @@ func (c *Chain) Usage() {
 		}
 	}
 	format := fmt.Sprintf("  %%-%ds- %%s\n", max_length+2)
-
-	// Sort the encoders alphabetically
 	names := c.GetEncoders()
 
 	for _, n := range names {
