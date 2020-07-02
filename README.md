@@ -55,6 +55,45 @@ $ echo 'what%ever'|pencode urlencode b64encode hexencode
 - UTF16 encoder (Little Endian)
 - UTF16 encoder (Big Endian)
 
+
+### Shell completion
+
+Pencode can provide tab completion for available encoders. Bash, Zsh, and Fish are supported.
+
+```
+$ pencode <TAB>
+b64decode         hexdecode         unicodedecode     urldecode         urlencodeall      utf16be
+...
+```
+
+In order to activate shell completion, you need to inform your shell that completion is available for your script.
+
+#### Bash
+
+To get auto-complete working you need to `source` the `pencode-completion.bash` file in your `~/.bashrc` or similar:
+
+```
+source ~/path/to/pencode-completion.bash
+```
+
+#### Zsh
+
+To get auto-complete working you need to enable autocomplete _(not needed if you have Oh-My-Zsh)_ using `autoload -U compaudit && compinit` or by putting it into `~/.zshrc`
+
+Then `source` the `pencode-completion.zsh` file in your `.zshrc` or similar:
+
+```
+source ~/path/to/pencode-completion.zsh
+```
+
+#### Fish
+
+To get auto-complete working you need to `source` the `pencode-completion.fish` file to your config folder `~/.config/fish/completions/pencode.fish` or similar:
+
+```
+source ~/path/to/pencode-completion.fish
+```
+
 ### Upcoming
 
 - Templating
