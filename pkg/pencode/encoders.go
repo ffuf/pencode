@@ -68,6 +68,16 @@ func (c *Chain) HasEncoder(name string) bool {
 	return false
 }
 
+func (c *Chain) GetEncoders() []string {
+	// Sort the encoders alphabetically
+	names := make([]string, 0, len(availableEncoders))
+	for e := range availableEncoders {
+		names = append(names, e)
+	}
+	sort.Strings(names)
+	return names
+}
+
 //Usage prints the help string for each  configured encoder
 func (c *Chain) Usage() {
 	// Calculate maximum keyword length for nice help formatting
@@ -78,13 +88,7 @@ func (c *Chain) Usage() {
 		}
 	}
 	format := fmt.Sprintf("  %%-%ds- %%s\n", max_length+2)
-
-	// Sort the encoders alphabetically
-	names := make([]string, 0, len(availableEncoders))
-	for k := range availableEncoders {
-		names = append(names, k)
-	}
-	sort.Strings(names)
+	names := c.GetEncoders()
 
 	for _, n := range names {
 		v := availableEncoders[n]

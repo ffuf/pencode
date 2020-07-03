@@ -5,12 +5,14 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/ffuf/pencode/pkg/pencode"
 )
 
 func main() {
 	chain := pencode.NewChain()
+
 	flag.Usage = func() {
 		fmt.Printf("pencode - complex payload encoder v%s\n\n", pencode.VERSION)
 		fmt.Printf("Usage: %s ENCODER1 ENCODER2 ENCODER3...\n\n", os.Args[0])
@@ -18,11 +20,21 @@ func main() {
 		fmt.Printf("Available encoders:\n")
 		chain.Usage()
 	}
+
+	var listMode bool
+	flag.BoolVar(&listMode, "list", false, "list available encoders")
 	flag.Parse()
+
+	if listMode {
+		fmt.Println(strings.Join(chain.GetEncoders(), "\n"))
+		os.Exit(1)
+	}
+
 	if len(os.Args) < 2 {
 		flag.Usage()
 		os.Exit(1)
 	}
+
 	err := chain.Initialize(os.Args[1:])
 	if err != nil {
 		flag.Usage()
