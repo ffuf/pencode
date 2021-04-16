@@ -13,7 +13,7 @@ func (u JSONDecoder) Encode(input []byte) ([]byte, error) {
 
 	var out JSONInput
 	if err := json.Unmarshal([]byte(inputJson), &out); err != nil {
-		panic(err)
+		return []byte{}, err
 	}
 
 	return []byte(out.Input), nil
