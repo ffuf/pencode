@@ -5,9 +5,9 @@ import (
 	"encoding/json"
 )
 
-type JSONEncoder struct{}
+type JSONEscaper struct{}
 
-func (u JSONEncoder) Encode(input []byte) ([]byte, error) {
+func (u JSONEscaper) Encode(input []byte) ([]byte, error) {
 	buf := &bytes.Buffer{}
 	enc := json.NewEncoder(buf)
 	enc.SetEscapeHTML(false) // prevents encoding of < and > characters
@@ -20,6 +20,6 @@ func (u JSONEncoder) Encode(input []byte) ([]byte, error) {
 	return output[1 : len(output)-2], nil
 }
 
-func (u JSONEncoder) HelpText() string {
-	return "JSON encode reserved characters"
+func (u JSONEscaper) HelpText() string {
+	return "JSON escape"
 }

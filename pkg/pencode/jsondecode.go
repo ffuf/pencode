@@ -2,13 +2,13 @@ package pencode
 
 import "encoding/json"
 
-type JSONDecoder struct{}
+type JSONUnescaper struct{}
 
 type JSONInput struct {
 	Input string `json:"input"`
 }
 
-func (u JSONDecoder) Encode(input []byte) ([]byte, error) {
+func (u JSONUnescaper) Encode(input []byte) ([]byte, error) {
 	inputJson := `{"input":"` + string(input) + `"}`
 
 	var out JSONInput
@@ -19,6 +19,6 @@ func (u JSONDecoder) Encode(input []byte) ([]byte, error) {
 	return []byte(out.Input), nil
 }
 
-func (u JSONDecoder) HelpText() string {
-	return "JSON decode"
+func (u JSONUnescaper) HelpText() string {
+	return "JSON unescape"
 }
