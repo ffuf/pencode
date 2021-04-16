@@ -38,14 +38,14 @@ func main() {
 	err := chain.Initialize(os.Args[1:])
 	if err != nil {
 		flag.Usage()
-		fmt.Printf("\n[!] %s", err)
+		fmt.Printf("\n[!] %s\n", err)
 		os.Exit(1)
 	}
 
 	input := readInput()
 	output, err := chain.Encode([]byte(input))
 	if err != nil {
-		fmt.Printf("  [!] %s", err)
+		fmt.Printf("  [!] %s\n", err)
 	}
 	fmt.Print(string(output))
 }
