@@ -25,6 +25,8 @@ Available encoders:
   b64encode         - Base64 encoder
   hexdecode         - Hex string decoder
   hexencode         - Hex string encoder
+  jsonescape        - JSON escape
+  jsonunescape      - JSON unescape
   unicodedecode     - Unicode escape string decode
   unicodeencodeall  - Unicode escape string encode (all characters)
   urldecode         - URL decode
@@ -47,6 +49,8 @@ $ echo 'what%ever'|pencode urlencode b64encode hexencode
 - Base64 decoder
 - Hex string encoder
 - Hex string decoder
+- JSON escape encoder (reserved characters)
+- JSON escape decoder
 - Unicode escape string encoder
 - Unicode escape string decoder
 - URL encoder (reserved characters)
