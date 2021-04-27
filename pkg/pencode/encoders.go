@@ -10,6 +10,8 @@ var availableEncoders = map[string]Encoder{
 	"b64decode":        Base64Decoder{},
 	"hexencode":        HexEncoder{},
 	"hexdecode":        HexDecoder{},
+	"jsonescape":       JSONEscaper{},
+	"jsonunescape":     JSONUnescaper{},
 	"unicodedecode":    UnicodeDecode{},
 	"unicodeencodeall": UnicodeEncodeAll{},
 	"urlencode":        URLEncoder{},
