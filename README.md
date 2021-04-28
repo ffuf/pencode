@@ -34,6 +34,8 @@ Available encoders:
   urlencodeall      - URL encode all characters
   utf16             - UTF-16 encoder (Little Endian)
   utf16be           - UTF-16 encoder (Big Endian)
+  xmlescape         - XML escape
+  xmlunescape       - XML unescape
 ```
 
 To urlencode, base64encode and hex encode a string:
@@ -58,6 +60,8 @@ $ echo 'what%ever'|pencode urlencode b64encode hexencode
 - URL decoder
 - UTF16 encoder (Little Endian)
 - UTF16 encoder (Big Endian)
+- XML escape encoder (reserved characters)
+- XML escape decoder
 
 
 ### Shell completion
