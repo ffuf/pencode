@@ -1,0 +1,57 @@
+before:
+  hooks:
+    - go mod tidy
+    - go generate ./...
+builds:
+  - id: pencode
+    binary: pencode
+    flags:
+      - -trimpath
+    env:
+      - CGO_ENABLED=0
+    asmflags:
+      - all=-trimpath={{.Env.GOPATH}}
+    gcflags:
+      - all=-trimpath={{.Env.GOPATH}}
+    ldflags:
+      -s -w -extldflags '-static'
+    goos:
+      - linux
+      - windows
+      - darwin
+      - freebsd
+      - openbsd
+    goarch:
+      - amd64
+      - 386
+      - arm
+      - arm64
+    main: ./cmd/pencode
+    ignore:
+      - goos: darwin
+        goarch: 386
+archives:
+  - replacements:
+      darwin: macOS
+      linux: Linux
+      windows: Windows
+      386: i386
+      amd64: x86_64
+    id: tgz
+    format: tar.gz
+    format_overrides:
+      - goos: windows
+        format: zip
+      - goos: darwin
+        format: zip
+
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
