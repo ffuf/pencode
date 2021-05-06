@@ -8,6 +8,7 @@ import (
 var availableEncoders = map[string]Encoder{
 	"b64encode":        Base64Encoder{},
 	"b64decode":        Base64Decoder{},
+	"filename.tmpl":    Template{},
 	"hexencode":        HexEncoder{},
 	"hexdecode":        HexDecoder{},
 	"jsonescape":       JSONEscaper{},
@@ -40,8 +41,19 @@ func (c *Chain) Initialize(actions []string) error {
 	c.actions = actions
 	c.Encoders = make([]Encoder, 0)
 	for _, a := range actions {
-		if c.HasEncoder(a) {
-			c.Encoders = append(c.Encoders, availableEncoders[a])
+		if ok, err := c.HasEncoder(a); ok {
+			// Templates are a bit special
+			if isTemplate(a) {
+				tenc, err := NewTemplateEncoder(a)
+				if err != nil {
+					return err
+				}
+				c.Encoders = append(c.Encoders, tenc)
+			} else {
+				c.Encoders = append(c.Encoders, availableEncoders[a])
+			}
+		} else if err != nil {
+			return err
 		} else {
 			return fmt.Errorf("Encoder %s requested but not found.\n", a)
 		}
@@ -65,11 +77,15 @@ func (c *Chain) Encode(input []byte) ([]byte, error) {
 }
 
 //HasEncoder returns true if encoder with a specified name is configured
-func (c *Chain) HasEncoder(name string) bool {
+func (c *Chain) HasEncoder(name string) (bool, error) {
 	if _, ok := availableEncoders[name]; ok {
-		return true
+		return true, nil
 	}
-	return false
+	// Check for template
+	if isTemplate(name) {
+		return hasTemplate(name)
+	}
+	return false, nil
 }
 
 func (c *Chain) GetEncoders() []string {
