@@ -8,21 +8,22 @@ it is required to apply multiple encodings to a payload (and possibly inserting 
 
 ## Installation
 ```
-go get -u github.com/ffuf/pencode/cmd/pencode
+go install github.com/ffuf/pencode/cmd/pencode
 ```
 
 ### Usage
 
 ```
-pencode - complex payload encoder v0.1
+pencode - complex payload encoder v0.2
 
-Usage: pencode ENCODER1 ENCODER2 ENCODER3...
+Usage: ./pencode ENCODER1 ENCODER2 ENCODER3...
 
-pencode reads input from stdin, which is typically piped from another process.
+./pencode reads input from stdin, which is typically piped from another process.
 
 Available encoders:
   b64decode         - Base64 decoder
   b64encode         - Base64 encoder
+  filename.tmpl     - Replaces string #PAYLOAD# in content of a file that has .tmpl extension.
   hexdecode         - Hex string decoder
   hexencode         - Hex string encoder
   jsonescape        - JSON escape
@@ -36,6 +37,7 @@ Available encoders:
   utf16be           - UTF-16 encoder (Big Endian)
   xmlescape         - XML escape
   xmlunescape       - XML unescape
+
 ```
 
 To urlencode, base64encode and hex encode a string:
@@ -63,6 +65,11 @@ $ echo 'what%ever'|pencode urlencode b64encode hexencode
 - XML escape encoder (reserved characters)
 - XML escape decoder
 
+### Templating
+
+Any command line parameter that is a file path ending with `.tmpl` is considered as a template file by
+pencode. It attempts to read the file content and to replace instances of a string `#PAYLOAD#` within the file with
+the input in the current encoder chain.
 
 ### Shell completion
 
