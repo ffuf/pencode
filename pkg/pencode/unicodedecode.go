@@ -16,6 +16,10 @@ func (u UnicodeDecode) HelpText() string {
 	return "Unicode escape string decode"
 }
 
+func (u UnicodeDecode) Type() string {
+	return "decoders"
+}
+
 //This functionality is copied from encoding/json/decode.go with minor modifications
 func unquoteBytes(s []byte) []byte {
 	b := make([]byte, len(s)+2*utf8.UTFMax)

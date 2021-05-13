@@ -13,3 +13,7 @@ func (u URLEncoder) Encode(input []byte) ([]byte, error) {
 func (u URLEncoder) HelpText() string {
 	return "URL encode reserved characters"
 }
+
+func (u URLEncoder) Type() string {
+	return "encoders"
+}

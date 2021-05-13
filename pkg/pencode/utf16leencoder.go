@@ -23,3 +23,7 @@ func (u UTF16LEEncode) Encode(input []byte) ([]byte, error) {
 func (u UTF16LEEncode) HelpText() string {
 	return "UTF-16 encoder (Little Endian)"
 }
+
+func (u UTF16LEEncode) Type() string {
+	return "encoders"
+}

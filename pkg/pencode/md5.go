@@ -14,3 +14,7 @@ func (m MD5Hasher) Encode(input []byte) ([]byte, error) {
 func (m MD5Hasher) HelpText() string {
 	return "MD5 sum"
 }
+
+func (m MD5Hasher) Type() string {
+	return "hashes"
+}

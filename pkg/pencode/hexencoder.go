@@ -13,3 +13,7 @@ func (h HexEncoder) Encode(input []byte) ([]byte, error) {
 func (h HexEncoder) HelpText() string {
 	return "Hex string encoder"
 }
+
+func (h HexEncoder) Type() string {
+	return "encoders"
+}

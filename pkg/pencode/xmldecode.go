@@ -22,3 +22,7 @@ func (u XMLUnescaper) Encode(input []byte) ([]byte, error) {
 func (u XMLUnescaper) HelpText() string {
 	return "XML unescape"
 }
+
+func (u XMLUnescaper) Type() string {
+	return "decoders"
+}

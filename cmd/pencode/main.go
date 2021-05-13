@@ -15,9 +15,8 @@ func main() {
 
 	flag.Usage = func() {
 		fmt.Printf("pencode - complex payload encoder v%s\n\n", pencode.VERSION)
-		fmt.Printf("Usage: %s ENCODER1 ENCODER2 ENCODER3...\n\n", os.Args[0])
+		fmt.Printf("Usage: %s FUNC1 FUNC2 FUNC3...\n\n", os.Args[0])
 		fmt.Printf("%s reads input from stdin, which is typically piped from another process.\n\n", os.Args[0])
-		fmt.Printf("Available encoders:\n")
 		chain.Usage()
 	}
 
@@ -47,7 +46,7 @@ func main() {
 	if err != nil {
 		fmt.Printf("  [!] %s\n", err)
 	}
-	fmt.Println(string(output))
+	fmt.Print(string(output))
 }
 
 func readInput() string {
