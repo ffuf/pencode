@@ -22,3 +22,7 @@ func (u URLEncoderAll) Encode(input []byte) ([]byte, error) {
 func (u URLEncoderAll) HelpText() string {
 	return "URL encode all characters"
 }
+
+func (u URLEncoderAll) Type() string {
+	return "encoders"
+}

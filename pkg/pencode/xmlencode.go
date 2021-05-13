@@ -21,3 +21,7 @@ func (u XMLEscaper) Encode(input []byte) ([]byte, error) {
 func (u XMLEscaper) HelpText() string {
 	return "XML escape"
 }
+
+func (u XMLEscaper) Type() string {
+	return "encoders"
+}

@@ -14,3 +14,7 @@ func (m SHA1Hasher) Encode(input []byte) ([]byte, error) {
 func (m SHA1Hasher) HelpText() string {
 	return "SHA1 checksum"
 }
+
+func (m SHA1Hasher) Type() string {
+	return "hashes"
+}

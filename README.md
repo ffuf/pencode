@@ -16,27 +16,39 @@ go install github.com/ffuf/pencode/cmd/pencode
 ```
 pencode - complex payload encoder v0.2
 
-Usage: ./pencode ENCODER1 ENCODER2 ENCODER3...
+Usage: ./pencode FUNC1 FUNC2 FUNC3...
 
 ./pencode reads input from stdin, which is typically piped from another process.
 
-Available encoders:
-  b64decode         - Base64 decoder
+ENCODERS
   b64encode         - Base64 encoder
-  filename.tmpl     - Replaces string #PAYLOAD# in content of a file that has .tmpl extension.
-  hexdecode         - Hex string decoder
   hexencode         - Hex string encoder
   jsonescape        - JSON escape
-  jsonunescape      - JSON unescape
-  unicodedecode     - Unicode escape string decode
   unicodeencodeall  - Unicode escape string encode (all characters)
-  urldecode         - URL decode
   urlencode         - URL encode reserved characters
   urlencodeall      - URL encode all characters
   utf16             - UTF-16 encoder (Little Endian)
   utf16be           - UTF-16 encoder (Big Endian)
   xmlescape         - XML escape
+
+DECODERS
+  b64decode         - Base64 decoder
+  hexdecode         - Hex string decoder
+  jsonunescape      - JSON unescape
+  unicodedecode     - Unicode escape string decode
+  urldecode         - URL decode
   xmlunescape       - XML unescape
+
+HASHES
+  md5               - MD5 sum
+  sha1              - SHA1 checksum
+  sha224            - SHA224 checksum
+  sha256            - SHA256 checksum
+  sha384            - SHA384 checksum
+  sha512            - SHA512 checksum
+
+OTHER
+  filename.tmpl     - Replaces string #PAYLOAD# in content of a file that has .tmpl extension.
 
 ```
 
@@ -46,24 +58,6 @@ To urlencode, base64encode and hex encode a string:
 $ echo 'what%ever'|pencode urlencode b64encode hexencode
 64326868644355794e5756325a58493d
 ```
-
-### Available encoders
-
-- Base64 encoder
-- Base64 decoder
-- Hex string encoder
-- Hex string decoder
-- JSON escape encoder (reserved characters)
-- JSON escape decoder
-- Unicode escape string encoder
-- Unicode escape string decoder
-- URL encoder (reserved characters)
-- URL encoder (all characters)
-- URL decoder
-- UTF16 encoder (Little Endian)
-- UTF16 encoder (Big Endian)
-- XML escape encoder (reserved characters)
-- XML escape decoder
 
 ### Templating
 
@@ -108,10 +102,6 @@ To get auto-complete working you need to `source` the `pencode-completion.fish` 
 ```
 source ~/path/to/pencode-completion.fish
 ```
-
-### Upcoming
-
-- Templating
 
 ### Usage as a library
 

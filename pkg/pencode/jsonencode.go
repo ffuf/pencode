@@ -23,3 +23,7 @@ func (u JSONEscaper) Encode(input []byte) ([]byte, error) {
 func (u JSONEscaper) HelpText() string {
 	return "JSON escape"
 }
+
+func (u JSONEscaper) Type() string {
+	return "encoders"
+}

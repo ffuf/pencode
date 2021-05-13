@@ -45,3 +45,7 @@ func (t Template) Encode(input []byte) ([]byte, error) {
 func (t Template) HelpText() string {
 	return "Replaces string #PAYLOAD# in content of a file that has .tmpl extension."
 }
+
+func (t Template) Type() string {
+	return "other"
+}

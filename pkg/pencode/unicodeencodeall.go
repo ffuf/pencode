@@ -20,3 +20,7 @@ func (u UnicodeEncodeAll) Encode(input []byte) ([]byte, error) {
 func (u UnicodeEncodeAll) HelpText() string {
 	return "Unicode escape string encode (all characters)"
 }
+
+func (u UnicodeEncodeAll) Type() string {
+	return "encoders"
+}

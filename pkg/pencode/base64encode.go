@@ -14,3 +14,7 @@ func (b Base64Encoder) Encode(input []byte) ([]byte, error) {
 func (b Base64Encoder) HelpText() string {
 	return "Base64 encoder"
 }
+
+func (b Base64Encoder) Type() string {
+	return "encoders"
+}

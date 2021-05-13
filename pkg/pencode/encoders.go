@@ -3,6 +3,7 @@ package pencode
 import (
 	"fmt"
 	"sort"
+	"strings"
 )
 
 var availableEncoders = map[string]Encoder{
@@ -114,10 +115,19 @@ func (c *Chain) Usage() {
 		}
 	}
 	format := fmt.Sprintf("  %%-%ds- %%s\n", max_length+2)
-	names := c.GetEncoders()
-
-	for _, n := range names {
-		v := availableEncoders[n]
-		fmt.Printf(format, n, v.HelpText())
+	//names := c.GetEncoders()
+	for _, t := range []string{"encoders", "decoders", "hashes", "other"} {
+		fmt.Printf("%s\n", strings.ToUpper(t))
+		list := []string{}
+		for n, e := range availableEncoders {
+			if e.Type() == t {
+				list = append(list, fmt.Sprintf(format, n, e.HelpText()))
+			}
+		}
+		sort.Strings(list)
+		for _, i := range list {
+			fmt.Print(i)
+		}
+		fmt.Println()
 	}
 }

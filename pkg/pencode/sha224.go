@@ -14,3 +14,7 @@ func (m SHA224Hasher) Encode(input []byte) ([]byte, error) {
 func (m SHA224Hasher) HelpText() string {
 	return "SHA224 checksum"
 }
+
+func (m SHA224Hasher) Type() string {
+	return "hashes"
+}

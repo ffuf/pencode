@@ -17,3 +17,7 @@ func (u URLDecoder) Encode(input []byte) ([]byte, error) {
 func (u URLDecoder) HelpText() string {
 	return "URL decode"
 }
+
+func (u URLDecoder) Type() string {
+	return "decoders"
+}
