@@ -13,7 +13,7 @@ var availableEncoders = map[string]Encoder{
 	"hexdecode":        HexDecoder{},
 	"jsonescape":       JSONEscaper{},
 	"jsonunescape":     JSONUnescaper{},
-	"md5":				MD5Hasher{},
+	"md5":              MD5Hasher{},
 	"unicodedecode":    UnicodeDecode{},
 	"unicodeencodeall": UnicodeEncodeAll{},
 	"urlencode":        URLEncoder{},

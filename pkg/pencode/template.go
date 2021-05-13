@@ -21,7 +21,7 @@ func hasTemplate(name string) (bool, error) {
 }
 
 type Template struct {
-	Data []byte
+	Data    []byte
 	Keyword string
 }
 
