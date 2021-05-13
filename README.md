@@ -49,6 +49,8 @@ HASHES
 
 OTHER
   filename.tmpl     - Replaces string #PAYLOAD# in content of a file that has .tmpl extension.
+  lower             - Convert string to lowercase
+  upper             - Convert string to uppercase
 
 ```
 
