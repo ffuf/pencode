@@ -47,7 +47,7 @@ func main() {
 	if err != nil {
 		fmt.Printf("  [!] %s\n", err)
 	}
-	fmt.Print(string(output))
+	fmt.Println(string(output))
 }
 
 func readInput() string {
