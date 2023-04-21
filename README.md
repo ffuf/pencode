@@ -18,7 +18,10 @@ pencode - complex payload encoder v0.3
 
 Usage: ./pencode FUNC1 FUNC2 FUNC3...
 
-./pencode reads input from stdin, which is typically piped from another process.
+./pencode reads input from stdin by default, which is typically piped from another process.
+
+OPTIONS:
+-input reads input from a file, line by line.
 
 ENCODERS
   b64encode         - Base64 encoder

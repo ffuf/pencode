@@ -13,10 +13,13 @@ import (
 func main() {
 	chain := pencode.NewChain()
 
+	inputWordlist := flag.String("input", "", "A wordlist to encode")
+
 	flag.Usage = func() {
 		fmt.Printf("pencode - complex payload encoder v%s\n\n", pencode.VERSION)
 		fmt.Printf("Usage: %s FUNC1 FUNC2 FUNC3...\n\n", os.Args[0])
-		fmt.Printf("%s reads input from stdin, which is typically piped from another process.\n\n", os.Args[0])
+		fmt.Printf("%s reads input from stdin by default, which is typically piped from another process.\n\n", os.Args[0])
+		fmt.Printf("OPTIONS:\n-input reads input from a file, line by line.\n\n")
 		chain.Usage()
 	}
 
@@ -34,19 +37,41 @@ func main() {
 		os.Exit(1)
 	}
 
-	err := chain.Initialize(os.Args[1:])
+	err := chain.Initialize(flag.Args())
 	if err != nil {
 		flag.Usage()
 		fmt.Printf("\n[!] %s\n", err)
 		os.Exit(1)
 	}
 
-	input := readInput()
-	output, err := chain.Encode([]byte(input))
-	if err != nil {
-		fmt.Printf("  [!] %s\n", err)
+	if *inputWordlist != "" {
+		// read the input wordlist and output to stdout
+		file, err := os.Open(*inputWordlist)
+
+		if err != nil {
+			fmt.Println(err)
+		}
+
+		defer file.Close()
+
+		fs := bufio.NewScanner(file)
+		fs.Split(bufio.ScanLines)
+
+		for fs.Scan() {
+			output, err := chain.Encode(fs.Bytes())
+			if err != nil {
+				fmt.Printf("  [!] %s\n", err)
+			}
+			fmt.Println(string(output))
+		}
+	} else {
+		input := readInput()
+		output, err := chain.Encode([]byte(input))
+		if err != nil {
+			fmt.Printf("  [!] %s\n", err)
+		}
+		fmt.Print(string(output))
 	}
-	fmt.Print(string(output))
 }
 
 func readInput() string {
