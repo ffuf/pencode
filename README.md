@@ -8,7 +8,7 @@ it is required to apply multiple encodings to a payload (and possibly inserting 
 
 ## Installation
 ```
-go install github.com/ffuf/pencode/cmd/pencode
+go install github.com/ffuf/pencode/cmd/pencode@latest
 ```
 
 ### Usage
