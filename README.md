@@ -26,6 +26,7 @@ OPTIONS:
 ENCODERS
   b64encode         - Base64 encoder
   hexencode         - Hex string encoder
+  htmlescape        - HTML escape
   jsonescape        - JSON escape
   unicodeencodeall  - Unicode escape string encode (all characters)
   urlencode         - URL encode reserved characters
@@ -37,6 +38,7 @@ ENCODERS
 DECODERS
   b64decode         - Base64 decoder
   hexdecode         - Hex string decoder
+  htmlunescape      - HTML unescape
   jsonunescape      - JSON unescape
   unicodedecode     - Unicode escape string decode
   urldecode         - URL decode
