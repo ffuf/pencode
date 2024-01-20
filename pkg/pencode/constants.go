@@ -1,3 +1,3 @@
 package pencode
 
-const VERSION = "0.3"
+const VERSION = "0.4"
