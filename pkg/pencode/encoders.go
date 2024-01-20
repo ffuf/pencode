@@ -12,6 +12,8 @@ var availableEncoders = map[string]Encoder{
 	"filename.tmpl":    Template{},
 	"hexencode":        HexEncoder{},
 	"hexdecode":        HexDecoder{},
+	"htmlescape":       HTMLEscaper{},
+	"htmlunescape":     HTMLUnescaper{},
 	"jsonescape":       JSONEscaper{},
 	"jsonunescape":     JSONUnescaper{},
 	"lower":            StrToLower{},
@@ -44,8 +46,8 @@ func NewChain() *Chain {
 	return &c
 }
 
-//Initialize loops through requested names for encoders and sets up the encoder chain. If an unknown encoder is
-//requested, error will be returned.
+// Initialize loops through requested names for encoders and sets up the encoder chain. If an unknown encoder is
+// requested, error will be returned.
 func (c *Chain) Initialize(actions []string) error {
 	c.actions = actions
 	c.Encoders = make([]Encoder, 0)
@@ -85,7 +87,7 @@ func (c *Chain) Encode(input []byte) ([]byte, error) {
 	return input, nil
 }
 
-//HasEncoder returns true if encoder with a specified name is configured
+// HasEncoder returns true if encoder with a specified name is configured
 func (c *Chain) HasEncoder(name string) (bool, error) {
 	if _, ok := availableEncoders[name]; ok {
 		return true, nil
@@ -107,7 +109,7 @@ func (c *Chain) GetEncoders() []string {
 	return names
 }
 
-//Usage prints the help string for each  configured encoder
+// Usage prints the help string for each  configured encoder
 func (c *Chain) Usage() {
 	// Calculate maximum keyword length for nice help formatting
 	max_length := 0
