@@ -3,7 +3,7 @@
 Pencode is a tool that helps you to create payload encoding chains. It has been designed to be used in automation whereever
 it is required to apply multiple encodings to a payload (and possibly inserting the payload to a template in between).
 
-`pencoder` can be used as a standalone command line tool or as a library for other Go programs.
+`pencode` can be used as a standalone command line tool or as a library for other Go programs.
 
 
 ## Installation
@@ -143,4 +143,4 @@ func main() {
 
 ## License
 
-`pencode` is released under MIT license. See [LICENSE](https://github.com/ffuf/pencoder/blob/master/LICENSE).
+`pencode` is released under MIT license. See [LICENSE](https://github.com/ffuf/pencode/blob/master/LICENSE).
