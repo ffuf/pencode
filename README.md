@@ -14,7 +14,7 @@ go install github.com/ffuf/pencode/cmd/pencode@latest
 ### Usage
 
 ```
-pencode - complex payload encoder v0.3
+pencode - complex payload encoder v0.4
 
 Usage: ./pencode FUNC1 FUNC2 FUNC3...
 
